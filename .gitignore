@@ -1,0 +1,18 @@
+.DS_Store
+**/.DS_Store
+.vercel
+
+# Source material — not part of the published site
+*.pdf
+/brief.md
+/drive-download-*/
+/mockups/
+
+# Unused full-res originals — the site only uses the optimized */web/ versions
+/assets/README.md
+/assets/*.png
+/assets/people/*.jpg
+/assets/members/*.png
+/assets/members/*.jpg
+/assets/news/*.jpg
+/assets/news/*.md

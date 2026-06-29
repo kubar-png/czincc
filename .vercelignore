@@ -1,0 +1,20 @@
+.git
+.gitignore
+.DS_Store
+**/.DS_Store
+
+# Source material — keep it out of the deployment
+*.pdf
+brief.md
+drive-download-*/
+mockups/
+README.md
+
+# Unused full-res originals — the site only uses the optimized */web/ versions
+assets/README.md
+assets/*.png
+assets/people/*.jpg
+assets/members/*.png
+assets/members/*.jpg
+assets/news/*.jpg
+assets/news/*.md

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Czech–Indian Chamber of Commerce — Connect. Solve. Scale.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+  :root{
+    --onyx:#2E0D20; --onyx-2:#432636; --onyx-3:#573D4D;
+    --gold:#C4AF78; --gold-lt:#C4AF78; --gold-deep:#8C7536;
+    --beige-0:#FDF8F4; --beige-1:#F9EFE5; --beige-2:#F6E4D4; --beige-3:#EDD0B5;
+    --cream:#F7F4ED;
+    --hair:color-mix(in srgb,var(--gold) 38%,transparent);
+    --hair-dark:color-mix(in srgb,var(--cream) 13%,transparent);
+    --maxw:1240px;
+    --mk-flame:#C4AF78; --mk-crown:#2E0D20;
+    --gold-band:#BDA568;
+    --ease:cubic-bezier(.2,.7,.2,1);
+    --swipe:cubic-bezier(.72,0,.24,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{font-family:"DM Sans",system-ui,sans-serif;background:var(--beige-0);color:var(--onyx);
+    -webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+  .logo{height:38px;width:auto;display:block}
+  .mk-flame{fill:var(--mk-flame)}
+  .mk-crown{fill:var(--mk-crown)}
+  .pad-y{padding:144px 0}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12.5px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.22em;color:var(--gold-deep)}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+  .u{text-decoration:none;white-space:nowrap}
+  .u::after{content:none}
+  .pill{position:relative;display:inline-flex;align-items:center;gap:10px;
+    --b:var(--gold);--s:var(--onyx);--tc:var(--onyx);--tch:var(--cream);
+    color:var(--tc);font-weight:600;font-size:14.5px;padding:12px 23px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--b);overflow:hidden;
+    background-image:linear-gradient(105deg,var(--s) 0 47%,var(--b) 53% 100%);
+    background-size:230% 100%;background-position:100% 0;background-repeat:no-repeat;
+    transition:background-position .6s var(--swipe),color .35s ease .05s,border-color .4s ease}
+  .pill:hover,.pill:focus-visible{background-position:0 0;color:var(--tch);border-color:var(--s);outline:none}
+  .pill svg{width:15px;height:15px;transition:transform .45s var(--swipe)}
+  .pill:hover svg,.pill:focus-visible svg{transform:translateX(4px)}
+  .pill.ghost{--b:transparent;--s:var(--onyx);--tc:var(--onyx);--tch:var(--cream);border-color:var(--hair)}
+  .pill.ghost:hover{border-color:var(--onyx)}
+  .pill.dark{--b:var(--onyx);--s:var(--cream);--tc:var(--cream);--tch:var(--onyx);border-color:var(--onyx)}
+  .pill.dark:hover{border-color:var(--cream)}
+  .pill.on-dark.ghost{--b:transparent;--s:var(--cream);--tc:var(--cream);--tch:var(--onyx);border-color:var(--hair-dark)}
+  .pill.on-dark.ghost:hover{border-color:var(--cream)}
+  .contact .pill,.band-onyx .pill{--s:var(--cream);--tch:var(--onyx)}
+  .ghost-link{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+  .ghost-link .circ{width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;flex:none;color:var(--gold);overflow:hidden;
+    background-image:linear-gradient(105deg,var(--gold) 0 47%,transparent 53% 100%);background-size:230% 100%;background-position:100% 0;background-repeat:no-repeat;
+    transition:background-position .5s var(--swipe),border-color .35s ease}
+  .ghost-link .circ svg{transition:transform .45s var(--swipe),stroke .3s ease}
+  .ghost-link:hover .circ{background-position:0 0}
+  .ghost-link:hover .circ svg{stroke:var(--onyx);transform:translateX(3px)}
+  .ghost-link svg{width:14px;height:14px}
+
+  header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--beige-0) 84%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .wm{display:flex;flex-direction:column;line-height:1.04}
+  .brand .wm b{font-weight:700;font-size:15px;color:var(--gold-deep);letter-spacing:-0.02em}
+  .brand .wm span{font-weight:700;font-size:15px;color:var(--onyx);letter-spacing:-0.02em}
+  nav.main{display:flex;align-items:center;gap:30px}
+  nav.main a{font-size:14.5px;font-weight:500;color:color-mix(in srgb,var(--onyx) 76%,transparent);transition:.2s}
+  nav.main a:hover{color:var(--onyx)}
+  .nav-right{display:flex;align-items:center;gap:16px}
+  .lang{display:flex;font-size:12.5px;font-weight:600;border:1px solid var(--hair);border-radius:999px;overflow:hidden}
+  .lang span{padding:5px 11px;color:var(--gold-deep);cursor:pointer}
+  .lang span.on{background:var(--onyx);color:var(--cream)}
+
+  /* hero */
+  .hero{padding:120px 0 0;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2}
+  h1.display{font-weight:700;letter-spacing:-0.038em;line-height:.97;font-size:clamp(46px,7vw,100px);margin:36px 0 0;max-width:15ch}
+  .lede{font-size:clamp(17px,1.5vw,20px);max-width:52ch;margin:34px 0 0;color:color-mix(in srgb,var(--onyx) 82%,transparent);line-height:1.55}
+  .cta-row{display:flex;align-items:center;gap:24px;margin:46px 0 0;flex-wrap:wrap}
+  .spark-wm{position:absolute;right:-50px;top:-26px;width:min(520px,42vw);z-index:1;pointer-events:none}
+  .spark-wm .ln{fill:none;stroke:var(--gold);stroke-width:.32;opacity:.55}
+  .spark-wm .crownln{fill:none;stroke:var(--onyx);stroke-width:.32;opacity:.34}
+  .spark-wm .flamefill{fill:var(--gold);opacity:.16}
+  .hero-foot{margin-top:96px;border-top:1px solid var(--hair)}
+  .triple{display:grid;grid-template-columns:repeat(3,1fr)}
+  .tcell{padding:36px 48px;border-right:1px solid var(--hair)}
+  .tcell:first-child{padding-left:0}
+  .tcell:last-child{border-right:none;padding-right:0}
+  .tcell b{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold-deep)}
+  .tcell p{margin-top:7px;font-size:15px;color:color-mix(in srgb,var(--onyx) 70%,transparent)}
+
+  /* onyx focus areas */
+  .band-onyx{background:var(--onyx);color:var(--cream);--mk-crown:#fdfaf5;--mk-flame:var(--gold-lt)}
+  .head-row{display:flex;align-items:flex-end;justify-content:space-between;
+    border-bottom:1px solid color-mix(in srgb,var(--gold) 32%,transparent);padding-bottom:30px}
+  .band-onyx h2{font-size:clamp(26px,2.8vw,38px);font-weight:700;letter-spacing:-0.025em;max-width:18ch}
+  .tag{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--gold-lt)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr)}
+  .pillar{padding:58px 48px 0 48px;border-right:1px solid var(--hair-dark)}
+  .pillar:first-child{padding-left:0}
+  .pillar:last-child{border-right:none;padding-right:0}
+  .pillar .no{font-size:14px;font-weight:600;color:var(--gold-lt);letter-spacing:.1em}
+  .pillar h3{margin:18px 0 12px;font-size:22px;font-weight:700;letter-spacing:-0.02em}
+  .pillar p{font-size:15.5px;line-height:1.62;color:color-mix(in srgb,var(--cream) 76%,transparent)}
+
+  /* gold membership-fit band */
+  .band-gold{background:var(--gold-band);color:var(--onyx)}
+  .band-gold .ast{font-size:42px;line-height:1;display:inline-block;margin-bottom:22px}
+  .band-gold h2{font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-0.03em;line-height:1.08;max-width:24ch}
+  .band-gold .u::after{background:var(--onyx);opacity:.85;height:4px}
+  .band-gold .cta-row{margin-top:30px}
+
+  /* leadership */
+  .lead h2{font-size:clamp(26px,3vw,42px);font-weight:700;letter-spacing:-0.03em;margin-top:14px}
+  .lead .sub{font-size:17px;color:color-mix(in srgb,var(--onyx) 72%,transparent);margin-top:10px;max-width:60ch}
+  .people{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+  .person{border:1px solid var(--hair);border-radius:16px;padding:20px;background:#fff;transition:.25s var(--ease);display:flex;flex-direction:column}
+  .person:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .portrait{aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--beige-2)}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .6s var(--ease)}
+  .person:hover .portrait img{transform:scale(1.04)}
+  .prow{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+  .li{width:34px;height:34px;border:1px solid var(--hair);border-radius:8px;display:grid;place-items:center;color:var(--gold-deep);overflow:hidden;
+    background-image:linear-gradient(105deg,var(--onyx) 0 47%,transparent 53% 100%);background-size:230% 100%;background-position:100% 0;background-repeat:no-repeat;
+    transition:background-position .45s var(--swipe),color .3s ease .05s,border-color .35s ease}
+  .li:hover{background-position:0 0;color:var(--cream);border-color:var(--onyx)}
+  .li svg{width:17px;height:17px}
+  .person h3{font-size:20px;font-weight:700;letter-spacing:-0.02em}
+  .person .role{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-deep)}
+  .person p{margin-top:14px;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--onyx) 72%,transparent)}
+
+  /* founding members */
+  .band-beige2{background:var(--beige-1)}
+  .members-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
+  .m{aspect-ratio:3/2;border:1px solid var(--hair);border-radius:12px;background:#fff;display:grid;place-items:center;
+    padding:16px 20px;transition:.25s var(--ease)}
+  .m:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 10px 26px -14px color-mix(in srgb,var(--onyx) 42%,transparent)}
+  .m:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .m img{max-width:100%;max-height:60px;object-fit:contain;display:block;transition:transform .25s var(--ease)}
+  .m:hover img{transform:scale(1.05)}
+  .m.partner{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 10%,#fff)}
+  .partner-note{margin-top:18px;font-size:13px;color:var(--gold-deep);font-weight:600}
+  .ph-note{margin-top:10px;font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:color-mix(in srgb,var(--onyx) 45%,transparent)}
+
+  /* news */
+  .news h2{font-size:clamp(26px,3vw,42px);font-weight:700;letter-spacing:-0.03em;margin-top:14px}
+  .feature{display:grid;grid-template-columns:1.1fr .9fr;gap:0;margin-top:56px;border:1px solid var(--hair);border-radius:18px;overflow:hidden;background:#fff}
+  .feature .thumb{background:linear-gradient(135deg,#5b2740,#2E0D20);min-height:340px;position:relative;display:flex;align-items:flex-end;padding:22px}
+  .feature .thumb .badge{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;background:rgba(0,0,0,.32);color:#fff;padding:5px 12px;border-radius:999px}
+  .feature .fbody{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
+  .feature .date{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-deep)}
+  .feature h3{margin:14px 0 16px;font-size:clamp(22px,2.2vw,30px);font-weight:700;letter-spacing:-0.025em;line-height:1.18}
+  .feature p{font-size:15.5px;line-height:1.6;color:color-mix(in srgb,var(--onyx) 72%,transparent)}
+  .feature .cta-row{margin-top:26px}
+
+  /* get in touch */
+  .contact{background:var(--onyx);color:var(--cream);--mk-crown:#fdfaf5;--mk-flame:var(--gold-lt)}
+  .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .contact h2{font-size:clamp(34px,4.6vw,64px);font-weight:700;letter-spacing:-0.035em;line-height:1}
+  .contact .u::after{background:var(--gold);height:6px}
+  .contact .sub{font-size:17px;margin-top:20px;color:color-mix(in srgb,var(--cream) 80%,transparent);max-width:40ch}
+  .cdetails{margin-top:34px;display:flex;flex-direction:column;gap:14px}
+  .cdetails a,.cdetails p{font-size:15.5px;color:color-mix(in srgb,var(--cream) 82%,transparent);display:flex;gap:12px;align-items:flex-start}
+  .cdetails svg{width:18px;height:18px;color:var(--gold-lt);flex:none;margin-top:2px}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  form .full{grid-column:1/-1}
+  label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-lt);margin-bottom:7px}
+  input,textarea{width:100%;background:color-mix(in srgb,var(--cream) 7%,transparent);border:1px solid var(--hair-dark);border-radius:10px;
+    padding:13px 15px;color:var(--cream);font-family:inherit;font-size:15px;transition:.2s}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);background:color-mix(in srgb,var(--cream) 11%,transparent)}
+  textarea{min-height:120px;resize:vertical}
+  form .pill{justify-content:center;width:100%}
+
+  /* footer */
+  footer{background:#230a1a;color:var(--cream);--mk-crown:#fdfaf5;--mk-flame:var(--gold-lt);padding:72px 0 34px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.1fr 1fr;gap:48px}
+  .fbrand .brand{margin-bottom:18px;gap:13px}
+  .fbrand .logo{height:40px}
+  .fbrand .wm b{color:var(--gold-lt)}
+  .fbrand .wm span{color:var(--cream)}
+  .fbrand p{font-size:14.5px;line-height:1.6;color:color-mix(in srgb,var(--cream) 64%,transparent);max-width:34ch}
+  .fcol h4{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--gold-lt);margin-bottom:18px}
+  .fcol a,.fcol p{display:block;font-size:14.5px;color:color-mix(in srgb,var(--cream) 78%,transparent);margin-bottom:11px;line-height:1.5}
+  .fcol a:hover{color:var(--cream)}
+  .fbottom{display:flex;align-items:center;justify-content:space-between;margin-top:56px;padding-top:24px;
+    border-top:1px solid var(--hair-dark);font-size:13px;color:color-mix(in srgb,var(--cream) 55%,transparent);flex-wrap:wrap;gap:12px}
+
+  @media(max-width:900px){
+    nav.main{display:none}
+    .triple,.pillars,.people,.members-grid,.contact .grid,.feature{grid-template-columns:1fr}
+    .members-grid{grid-template-columns:repeat(3,1fr)}
+    .tcell,.pillar{border-right:none;border-bottom:1px solid var(--hair)}
+    form{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr 1fr;gap:36px}
+    .spark-wm{opacity:.4;width:86vw;right:-24%;top:auto;bottom:0}
+    .pad-y{padding:92px 0}
+    .feature .thumb{min-height:200px}
+  }
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}}
+  @media (prefers-reduced-motion:no-preference){
+    .spark-wm circle,.spark-wm .ln,.spark-wm .crownln{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.9s var(--ease) forwards}
+    .spark-wm circle{animation-duration:1.5s}
+    .spark-wm .crownln{animation-delay:.35s}
+    .spark-wm .ln{animation-delay:.9s}
+    .spark-wm .flamefill{opacity:0;animation:flamein 1.1s ease 1.5s forwards,flamebreathe 6s ease-in-out 2.7s infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes flamein{from{opacity:0}to{opacity:.16}}
+    @keyframes flamebreathe{0%,100%{opacity:.16}50%{opacity:.08}}
+  }
+
+  /* Lenis — light smooth scroll */
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+  .lenis.lenis-stopped{overflow:hidden}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="367.41 232.05 106.70 130.81">
+    <path d="M0 0C3.468 1.972 5.233 6.32 3.278 9.827 1.199 13.946-2.6 17.503-3.743 21.969L-3.748 21.958C-4.902 17.498-8.696 13.94-10.769 9.827-12.73 6.32-10.959 1.972-7.491 0-15.89 1.759-22.053 9.407-21.689 18.165-21.61 19.907-21.028 21.56-20.288 23.039-20.025 23.924-19.543 24.731-19.072 25.6-17.621 28.283-15.912 30.693-14.192 33.214L-8.595 41.445C-6.673 44.269-4.068 49.16-3.748 52.785-3.423 49.16-.824 44.269 1.098 41.445L6.701 33.214C8.416 30.693 10.13 28.283 11.581 25.6 12.052 24.731 12.528 23.924 12.797 23.039 13.537 21.56 14.119 19.907 14.192 18.165 14.562 9.407 8.399 1.759 0 0" transform="matrix(1,0,0,-1,424.693,293.0067)" style="fill:var(--mk-flame)"/>
+    <path d="M0 0V17.383C-5.135 18.806-10.356 20.002-15.67 20.941-25.32 22.648-35.243 23.534-45.375 23.534-55.694 23.534-65.802 22.611-75.622 20.847-80.75 19.923-85.795 18.757-90.754 17.383V0C-85.733 1.397-80.622 2.573-75.426 3.508-65.671 5.26-55.629 6.183-45.375 6.195-35.125 6.183-25.083 5.26-15.323 3.508-10.132 2.573-5.021 1.397 0 0M-15.672 29.372C-10.354 28.43-5.133 27.237 0 25.814V83.384C-2.578 82.975-5.088 82.336-7.491 81.479-15.078 78.784-21.493 67.785-21.493 67.785-13.425 67.785-6.881 61.174-6.881 53.022-6.881 45.004-13.207 38.482-21.09 38.258H-21.493C-34.682 38.258-45.373 48.948-45.373 62.138-45.373 48.948-56.063 38.258-69.258 38.258H-69.661C-77.539 38.482-83.865 45.004-83.865 53.022-83.865 61.174-77.326 67.785-69.258 67.785-69.258 67.785-75.673 78.784-83.26 81.479-85.663 82.336-88.173 82.975-90.756 83.384V25.814C-85.792 27.192-80.75 28.352-75.623 29.277-65.801 31.042-55.693 31.96-45.373 31.96-35.243 31.96-25.32 31.075-15.672 29.372" transform="matrix(1,0,0,-1,466.3231,355.0547)" style="fill:var(--mk-crown)"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <svg class="logo" viewBox="367.41 232.05 106.70 130.81" aria-label="Czech-Indian Chamber of Commerce"><path class="mk-flame" d="M0 0C3.468 1.972 5.233 6.32 3.278 9.827 1.199 13.946-2.6 17.503-3.743 21.969L-3.748 21.958C-4.902 17.498-8.696 13.94-10.769 9.827-12.73 6.32-10.959 1.972-7.491 0-15.89 1.759-22.053 9.407-21.689 18.165-21.61 19.907-21.028 21.56-20.288 23.039-20.025 23.924-19.543 24.731-19.072 25.6-17.621 28.283-15.912 30.693-14.192 33.214L-8.595 41.445C-6.673 44.269-4.068 49.16-3.748 52.785-3.423 49.16-.824 44.269 1.098 41.445L6.701 33.214C8.416 30.693 10.13 28.283 11.581 25.6 12.052 24.731 12.528 23.924 12.797 23.039 13.537 21.56 14.119 19.907 14.192 18.165 14.562 9.407 8.399 1.759 0 0" transform="matrix(1,0,0,-1,424.693,293.0067)"/><path class="mk-crown" d="M0 0V17.383C-5.135 18.806-10.356 20.002-15.67 20.941-25.32 22.648-35.243 23.534-45.375 23.534-55.694 23.534-65.802 22.611-75.622 20.847-80.75 19.923-85.795 18.757-90.754 17.383V0C-85.733 1.397-80.622 2.573-75.426 3.508-65.671 5.26-55.629 6.183-45.375 6.195-35.125 6.183-25.083 5.26-15.323 3.508-10.132 2.573-5.021 1.397 0 0M-15.672 29.372C-10.354 28.43-5.133 27.237 0 25.814V83.384C-2.578 82.975-5.088 82.336-7.491 81.479-15.078 78.784-21.493 67.785-21.493 67.785-13.425 67.785-6.881 61.174-6.881 53.022-6.881 45.004-13.207 38.482-21.09 38.258H-21.493C-34.682 38.258-45.373 48.948-45.373 62.138-45.373 48.948-56.063 38.258-69.258 38.258H-69.661C-77.539 38.482-83.865 45.004-83.865 53.022-83.865 61.174-77.326 67.785-69.258 67.785-69.258 67.785-75.673 78.784-83.26 81.479-85.663 82.336-88.173 82.975-90.756 83.384V25.814C-85.792 27.192-80.75 28.352-75.623 29.277-65.801 31.042-55.693 31.96-45.373 31.96-35.243 31.96-25.32 31.075-15.672 29.372" transform="matrix(1,0,0,-1,466.3231,355.0547)"/></svg>
+      <span class="wm"><b>Czech–Indian</b><span>Chamber of Commerce</span></span>
+    </a>
+    <nav class="main">
+      <a href="#focus">About</a><a href="#fit">Membership</a><a href="#leadership">Leadership</a><a href="#members">Members</a><a href="#news">News</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang"><span class="on">EN</span><span>CS</span></div>
+      <a class="pill" href="#contact">Become a member
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <svg class="spark-wm" viewBox="367.41 232.05 106.70 130.81" aria-hidden="true">
+    
+    <path class="flamefill" transform="matrix(1,0,0,-1,424.693,293.0067)" d="M0 0C3.468 1.972 5.233 6.32 3.278 9.827 1.199 13.946-2.6 17.503-3.743 21.969L-3.748 21.958C-4.902 17.498-8.696 13.94-10.769 9.827-12.73 6.32-10.959 1.972-7.491 0-15.89 1.759-22.053 9.407-21.689 18.165-21.61 19.907-21.028 21.56-20.288 23.039-20.025 23.924-19.543 24.731-19.072 25.6-17.621 28.283-15.912 30.693-14.192 33.214L-8.595 41.445C-6.673 44.269-4.068 49.16-3.748 52.785-3.423 49.16-.824 44.269 1.098 41.445L6.701 33.214C8.416 30.693 10.13 28.283 11.581 25.6 12.052 24.731 12.528 23.924 12.797 23.039 13.537 21.56 14.119 19.907 14.192 18.165 14.562 9.407 8.399 1.759 0 0"/>
+    <path class="ln" pathLength="1" transform="matrix(1,0,0,-1,424.693,293.0067)" d="M0 0C3.468 1.972 5.233 6.32 3.278 9.827 1.199 13.946-2.6 17.503-3.743 21.969L-3.748 21.958C-4.902 17.498-8.696 13.94-10.769 9.827-12.73 6.32-10.959 1.972-7.491 0-15.89 1.759-22.053 9.407-21.689 18.165-21.61 19.907-21.028 21.56-20.288 23.039-20.025 23.924-19.543 24.731-19.072 25.6-17.621 28.283-15.912 30.693-14.192 33.214L-8.595 41.445C-6.673 44.269-4.068 49.16-3.748 52.785-3.423 49.16-.824 44.269 1.098 41.445L6.701 33.214C8.416 30.693 10.13 28.283 11.581 25.6 12.052 24.731 12.528 23.924 12.797 23.039 13.537 21.56 14.119 19.907 14.192 18.165 14.562 9.407 8.399 1.759 0 0"/>
+    <path class="crownln" pathLength="1" transform="matrix(1,0,0,-1,466.3231,355.0547)" d="M0 0V17.383C-5.135 18.806-10.356 20.002-15.67 20.941-25.32 22.648-35.243 23.534-45.375 23.534-55.694 23.534-65.802 22.611-75.622 20.847-80.75 19.923-85.795 18.757-90.754 17.383V0C-85.733 1.397-80.622 2.573-75.426 3.508-65.671 5.26-55.629 6.183-45.375 6.195-35.125 6.183-25.083 5.26-15.323 3.508-10.132 2.573-5.021 1.397 0 0M-15.672 29.372C-10.354 28.43-5.133 27.237 0 25.814V83.384C-2.578 82.975-5.088 82.336-7.491 81.479-15.078 78.784-21.493 67.785-21.493 67.785-13.425 67.785-6.881 61.174-6.881 53.022-6.881 45.004-13.207 38.482-21.09 38.258H-21.493C-34.682 38.258-45.373 48.948-45.373 62.138-45.373 48.948-56.063 38.258-69.258 38.258H-69.661C-77.539 38.482-83.865 45.004-83.865 53.022-83.865 61.174-77.326 67.785-69.258 67.785-69.258 67.785-75.673 78.784-83.26 81.479-85.663 82.336-88.173 82.975-90.756 83.384V25.814C-85.792 27.192-80.75 28.352-75.623 29.277-65.801 31.042-55.693 31.96-45.373 31.96-35.243 31.96-25.32 31.075-15.672 29.372"/>
+  </svg>
+  <div class="wrap">
+    <h1 class="display">The spark that lights shared <span class="u">commerce</span>.</h1>
+    <p class="lede">A member-driven, non-profit platform connecting companies already active in both countries — to share know-how, solve practical issues on the ground, and strengthen long-term industrial cooperation.</p>
+    <div class="cta-row">
+      <a class="pill" href="#contact">Become a member
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="ghost-link" href="#focus"><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Why another chamber?</a>
+    </div>
+    <div class="hero-foot">
+      <div class="triple">
+        <div class="tcell"><b>Connect</b><p>A curated peer network of companies active in both markets.</p></div>
+        <div class="tcell"><b>Solve</b><p>Practical tools, manuals and guidance for operations on the ground.</p></div>
+        <div class="tcell"><b>Scale</b><p>A coordinated member voice and a Czech industrial cluster in India.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-onyx pad-y" id="focus">
+  <div class="wrap">
+    <div class="head-row">
+      <h2>Our focus areas</h2>
+      <span class="tag">Three pillars</span>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="no">01</div><h3>Member Peer Network</h3>
+        <p>A curated community sharing CZ–IN project experience, practical solutions and trusted contacts, supported by fast member communication.</p></div>
+      <div class="pillar"><div class="no">02</div><h3>Operations &amp; Talent</h3>
+        <p>Manuals, guides, templates and checklists for CZ–IN operations, plus shared HR know-how on hiring, retention, intercultural management and mobility.</p></div>
+      <div class="pillar"><div class="no">03</div><h3>Industry &amp; Advocacy</h3>
+        <p>Unified member voice toward CZ/IN authorities on visas and market access, plus support for industrial cluster cooperation and joint projects in India.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-gold pad-y" id="fit">
+  <div class="wrap">
+    <span class="ast">✳</span>
+    <h2>CZINCC is best suited for companies with real CZ–IN activity — and those <span class="u">preparing</span> to enter either market.</h2>
+    <p style="max-width:48ch;margin-top:20px;font-size:17px;line-height:1.6">For teams who value practical member-to-member guidance, shared experience, and trusted introductions.</p>
+    <div class="cta-row">
+      <a class="pill dark" href="#contact">Read more
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="lead pad-y" id="leadership">
+  <div class="wrap">
+    <span class="eyebrow">CZINCC Leadership</span>
+    <h2>The people behind the chamber</h2>
+    <p class="sub">Meet the statutory officers responsible for governance, representation, and direction.</p>
+    <div class="people">
+      <div class="person">
+        <div class="portrait"><img src="assets/people/web/jan-musil.jpg" alt="Jan Musil, President of CZINCC"></div>
+        <div class="prow"><h3>Jan Musil</h3>
+          <a class="li" href="#" aria-label="Jan Musil on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21h-4z"/></svg></a>
+        </div>
+        <div class="role">President CZINCC</div>
+        <p>Chairman of the Board and CEO of LIKO-S, a.s., a Czech family-owned company. Focused on innovation-driven growth, international partnerships, and pragmatic business collaboration.</p>
+      </div>
+      <div class="person">
+        <div class="portrait"><img src="assets/people/web/jan-skotak.jpg" alt="Jan Skoták, Vice President of CZINCC"></div>
+        <div class="prow"><h3>Jan Skoták</h3>
+          <a class="li" href="#" aria-label="Jan Skoták on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21h-4z"/></svg></a>
+        </div>
+        <div class="role">Vice President</div>
+        <p>Infosys CEE &amp; UK Centers Head and Vice President of ABSL Czech Republic. Brings long-term leadership experience across IT and business services, with a strong focus on scaling operations and building cross-border teams.</p>
+      </div>
+      <div class="person">
+        <div class="portrait"><img src="assets/people/web/shashidhar-singh.jpg" alt="Shashidhar Singh, Vice President of CZINCC"></div>
+        <div class="prow"><h3>Shashidhar Singh</h3>
+          <a class="li" href="#" aria-label="Shashidhar Singh on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21h-4z"/></svg></a>
+        </div>
+        <div class="role">Vice President</div>
+        <p>CEO / Company Director of DINA-HITEX, spol. s r.o. Supports international business development built on production excellence and long-term partnerships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-beige2 pad-y" id="members">
+  <div class="wrap">
+    <div class="head-row" style="border-color:var(--hair)">
+      <h2 style="color:var(--onyx);font-size:clamp(26px,3vw,42px);letter-spacing:-0.03em">Founding Members</h2>
+      <span class="tag" style="color:var(--gold-deep)">17 companies</span>
+    </div>
+    <div class="members-grid">
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/liko-s.png" alt="LIKO-S"></a>
+      <a class="m partner" href="#" target="_blank" rel="noopener"><img src="assets/members/web/bdo.png" alt="BDO"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/infosys.png" alt="Infosys"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/lasvit.jpg" alt="Lasvit"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/wikov.png" alt="Wikov"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/abo-valve.png" alt="ABO Valve"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/dina-hitex.png" alt="DINA-HITEX"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/uepa.png" alt="UEPA Advokáti"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/csg.png" alt="Czechoslovak Group"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/dookan.png" alt="Dookan"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/process-solutions.png" alt="Process Solutions"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/pushpak.png" alt="Pushpak"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/spectre-tax.png" alt="Spectre Tax"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/czech-visa-lawyer.jpg" alt="Czech Visa Lawyer"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/insource-india.jpg" alt="Insource India"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/eu2india.jpg" alt="EU2India"></a>
+      <a class="m" href="#" target="_blank" rel="noopener"><img src="assets/members/web/momentum.jpg" alt="Momentum"></a>
+    </div>
+    <p class="partner-note">★ BDO — Official Professional Services Partner</p>
+  </div>
+</section>
+
+<section class="news pad-y" id="news">
+  <div class="wrap">
+    <span class="eyebrow">Latest Updates from CZINCC</span>
+    <h2>Newsroom</h2>
+    <div class="feature">
+      <div class="thumb" style="background-image:linear-gradient(180deg,rgba(46,13,32,0) 40%,rgba(46,13,32,.55)),url('assets/news/web/article-1-cover.jpg');background-size:cover;background-position:center 18%"><span class="badge">Interview</span></div>
+      <div class="fbody">
+        <div class="date">Jun 17 · 4 min read</div>
+        <h3>Major Chaudhary: “Want to succeed in India? Invest in local relationships and value creation.”</h3>
+        <p>India is becoming an increasingly important destination for Czech companies looking to expand internationally, build partnerships, or establish manufacturing and service operations abroad. A conversation with Major Guneet Chaudhary, Honorary Consul of the Czech Republic in Northern India and Honorary Member of CZINCC.</p>
+        <div class="cta-row">
+          <a class="ghost-link" href="#"><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Read the interview</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact pad-y" id="contact">
+  <div class="wrap grid">
+    <div>
+      <h2>Get in <span class="u">touch</span>.</h2>
+      <p class="sub">Interested in becoming a member? Send a message and we’ll share the Articles of Association and the membership application form.</p>
+      <div class="cdetails">
+        <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.3-7-11a7 7 0 0114 0c0 4.7-7 11-7 11z"/><circle pathLength="1" cx="12" cy="10" r="2.6"/></svg>Milevská 2095/5, 140 00 Praha 4, Czechia</p>
+        <a href="mailto:info@czin.cc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@czin.cc</a>
+        <a href="tel:+420606708579"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>+420 606 708 579</a>
+      </div>
+    </div>
+    <form onsubmit="return false">
+      <div><label>First name</label><input type="text" placeholder="Jan"></div>
+      <div><label>Last name</label><input type="text" placeholder="Novák"></div>
+      <div class="full"><label>Email</label><input type="email" placeholder="jan@company.cz"></div>
+      <div class="full"><label>Subject</label><input type="text" placeholder="Membership enquiry"></div>
+      <div class="full"><label>Message</label><textarea placeholder="Leave us a message…"></textarea></div>
+      <div class="full"><button class="pill" type="submit">Submit
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="brand" href="#top">
+        <svg class="logo" viewBox="367.41 232.05 106.70 130.81" aria-label="Czech-Indian Chamber of Commerce"><path class="mk-flame" d="M0 0C3.468 1.972 5.233 6.32 3.278 9.827 1.199 13.946-2.6 17.503-3.743 21.969L-3.748 21.958C-4.902 17.498-8.696 13.94-10.769 9.827-12.73 6.32-10.959 1.972-7.491 0-15.89 1.759-22.053 9.407-21.689 18.165-21.61 19.907-21.028 21.56-20.288 23.039-20.025 23.924-19.543 24.731-19.072 25.6-17.621 28.283-15.912 30.693-14.192 33.214L-8.595 41.445C-6.673 44.269-4.068 49.16-3.748 52.785-3.423 49.16-.824 44.269 1.098 41.445L6.701 33.214C8.416 30.693 10.13 28.283 11.581 25.6 12.052 24.731 12.528 23.924 12.797 23.039 13.537 21.56 14.119 19.907 14.192 18.165 14.562 9.407 8.399 1.759 0 0" transform="matrix(1,0,0,-1,424.693,293.0067)"/><path class="mk-crown" d="M0 0V17.383C-5.135 18.806-10.356 20.002-15.67 20.941-25.32 22.648-35.243 23.534-45.375 23.534-55.694 23.534-65.802 22.611-75.622 20.847-80.75 19.923-85.795 18.757-90.754 17.383V0C-85.733 1.397-80.622 2.573-75.426 3.508-65.671 5.26-55.629 6.183-45.375 6.195-35.125 6.183-25.083 5.26-15.323 3.508-10.132 2.573-5.021 1.397 0 0M-15.672 29.372C-10.354 28.43-5.133 27.237 0 25.814V83.384C-2.578 82.975-5.088 82.336-7.491 81.479-15.078 78.784-21.493 67.785-21.493 67.785-13.425 67.785-6.881 61.174-6.881 53.022-6.881 45.004-13.207 38.482-21.09 38.258H-21.493C-34.682 38.258-45.373 48.948-45.373 62.138-45.373 48.948-56.063 38.258-69.258 38.258H-69.661C-77.539 38.482-83.865 45.004-83.865 53.022-83.865 61.174-77.326 67.785-69.258 67.785-69.258 67.785-75.673 78.784-83.26 81.479-85.663 82.336-88.173 82.975-90.756 83.384V25.814C-85.792 27.192-80.75 28.352-75.623 29.277-65.801 31.042-55.693 31.96-45.373 31.96-35.243 31.96-25.32 31.075-15.672 29.372" transform="matrix(1,0,0,-1,466.3231,355.0547)"/></svg>
+          <span class="wm"><b>Czech–Indian</b><span>Chamber of Commerce</span></span>
+        </a>
+        <p>A member-driven, non-profit platform connecting companies active across the Czech Republic and India.</p>
+      </div>
+      <div class="fcol"><h4>Explore</h4>
+        <a href="#focus">About Us</a><a href="#fit">Membership</a><a href="#leadership">Leadership</a><a href="#members">Members</a><a href="#news">News</a></div>
+      <div class="fcol"><h4>Contact Us</h4>
+        <p>Milevská 2095/5<br>140 00 Praha 4, Czechia</p>
+        <a href="mailto:info@czin.cc">info@czin.cc</a>
+        <a href="tel:+420606708579">+420 606 708 579</a></div>
+      <div class="fcol"><h4>Connect</h4>
+        <a href="https://instagram.com/czincc" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Czech–Indian Chamber of Commerce · IČO [TBD]</span>
+      <span>www.czin.cc · Praha — Bhārat</span>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
