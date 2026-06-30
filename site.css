@@ -18,7 +18,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{font-family:"DM Sans",system-ui,sans-serif;background:var(--beige-0);color:var(--onyx);
-  -webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-0.01em}
+  -webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-0.01em;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
 .logo{height:38px;width:auto;display:block}
@@ -142,12 +142,9 @@ h2.sec{font-size:clamp(26px,3vw,42px);font-weight:700;letter-spacing:-0.03em;lin
 /* founding members */
 .members-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
 .m{aspect-ratio:3/2;border:1px solid var(--hair);border-radius:12px;background:#fff;display:grid;place-items:center;
-  padding:16px 20px;transition:.25s var(--ease)}
-.m:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 10px 26px -14px color-mix(in srgb,var(--onyx) 42%,transparent)}
-.m:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.m img{max-width:100%;max-height:60px;object-fit:contain;display:block;transition:transform .25s var(--ease)}
-.m:hover img{transform:scale(1.05)}
-.m.partner{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 10%,#fff)}
+  padding:16px 20px;cursor:pointer;transition:transform .14s var(--ease),box-shadow .14s var(--ease)}
+.m:active{transform:scale(.95);box-shadow:0 6px 18px -12px color-mix(in srgb,var(--onyx) 45%,transparent)}
+.m img{max-width:100%;max-height:60px;object-fit:contain;display:block}
 .partner-note{margin-top:18px;font-size:13px;color:var(--gold-deep);font-weight:600}
 .ph-note{margin-top:10px;font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:color-mix(in srgb,var(--onyx) 45%,transparent)}
 
@@ -243,7 +240,6 @@ footer{background:#230a1a;color:var(--cream);--mk-crown:#fdfaf5;--mk-flame:var(-
 @media(max-width:600px){
   .wrap{padding:0 22px}
   .pad-y{padding:64px 0}
-  .brand .wm{display:none}
   .members-grid{grid-template-columns:repeat(2,1fr);gap:12px}
   nav.main a:not(.navcta){padding-left:22px;padding-right:22px}
   nav.main .navcta{margin-left:22px;margin-right:22px}
