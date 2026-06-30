@@ -59,3 +59,39 @@
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 })();
+
+/* Mobile navigation — injects a hamburger that reveals nav.main as a dropdown
+   panel on small screens. The header CTA is cloned into the panel so it stays
+   reachable when the desktop .nav-right is hidden. Runs regardless of motion
+   preference (navigation must always work). */
+(function () {
+  var header = document.querySelector('header');
+  var bar = header && header.querySelector('.bar');
+  var nav = header && header.querySelector('nav.main');
+  if (!header || !bar || !nav) return;
+
+  var btn = document.createElement('button');
+  btn.className = 'navtoggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  bar.appendChild(btn);
+
+  var cta = header.querySelector('.nav-right .pill');
+  if (cta && !nav.querySelector('.navcta')) {
+    var clone = cta.cloneNode(true);
+    clone.classList.add('navcta');
+    nav.appendChild(clone);
+  }
+
+  function close() { header.classList.remove('nav-open'); btn.setAttribute('aria-expanded', 'false'); }
+
+  btn.addEventListener('click', function () {
+    var open = header.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
