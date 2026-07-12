@@ -95,3 +95,88 @@
   window.addEventListener('resize', function () { if (window.innerWidth > 900) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 })();
+
+/* Work-in-progress bubble — for controls and links that aren't live yet. Shows
+   a small "coming soon" tooltip on hover, focus, and click/tap. Applies to the
+   EN/CS switch, the founding-member logo cards, the footer social placeholders,
+   the leadership LinkedIn icons and the contact-form submit. Any other element
+   can opt in with data-wip="message". Pure progressive enhancement — without JS
+   the controls simply stay inert. */
+(function () {
+  var open = []; // currently click-opened hosts
+
+  function tag(el, msg, dot) {
+    if (el.dataset.wipReady) return; // idempotent
+    el.dataset.wipReady = '1';
+
+    // The bubble must live in a positioned, non-clipping box. If the element
+    // itself clips (overflow:hidden — the switch, icons, pill), wrap it so the
+    // bubble can escape; otherwise hang the bubble straight off the element.
+    var host;
+    if (getComputedStyle(el).overflow !== 'visible') {
+      host = document.createElement('span');
+      host.className = 'wip-wrap wip-host';
+      el.parentNode.insertBefore(host, el);
+      host.appendChild(el);
+    } else {
+      host = el;
+      el.classList.add('wip-host');
+    }
+
+    var bubble = document.createElement('span');
+    bubble.className = 'wip-bubble';
+    bubble.setAttribute('role', 'status');
+    bubble.innerHTML = msg;
+    host.appendChild(bubble);
+
+    if (dot) host.classList.add('wip-dot');
+    el.classList.add('is-wip');
+
+    // keep native semantics for real links/buttons; promote bare divs
+    if (!el.matches('a[href],button,input,select,textarea,[tabindex]')) {
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('role', 'button');
+    }
+    if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', bubble.textContent);
+
+    function toggle(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      var on = host.classList.toggle('wip-open');
+      if (on) { open.push(host); } else { open = open.filter(function (h) { return h !== host; }); }
+    }
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') toggle(e);
+    });
+  }
+
+  function tagAll(sel, msg, dot) {
+    Array.prototype.forEach.call(document.querySelectorAll(sel), function (el) { tag(el, msg, dot); });
+  }
+
+  // EN/CS switch — Czech version not live yet (gets the persistent "not final" dot)
+  tagAll('.lang', 'Czech version <b>coming soon</b> · připravujeme', true);
+  // founding-member logo cards — individual member pages aren't built yet
+  tagAll('.members-grid .m', 'Member page <b>coming soon</b>');
+  // footer social placeholders (real Instagram/email/phone links are left alone)
+  tagAll('footer a[href="#"]', '<b>Coming soon</b>');
+  // leadership LinkedIn icons
+  tagAll('.li[href="#"]', 'LinkedIn <b>coming soon</b>');
+  // contact / membership form — not wired to a backend yet
+  tagAll('form button[type="submit"]', 'Form <b>not live yet</b> — email info@czin.cc');
+  // generic opt-in: <element data-wip="My message">
+  Array.prototype.forEach.call(document.querySelectorAll('[data-wip]'), function (el) {
+    tag(el, el.getAttribute('data-wip') || 'Work in progress');
+  });
+
+  // dismiss click-opened bubbles when interacting elsewhere
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.wip-host')) closeAll();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+
+  function closeAll() {
+    open.forEach(function (h) { h.classList.remove('wip-open'); });
+    open = [];
+  }
+})();

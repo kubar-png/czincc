@@ -79,10 +79,12 @@ nav.main a:hover,nav.main a.active{color:var(--onyx)}
 nav.main a.active{position:relative}
 nav.main a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:16px}
+.nav-right .pill{white-space:nowrap}
 .lang{display:flex;font-size:12.5px;font-weight:600;border:1px solid var(--hair);border-radius:999px;overflow:hidden}
 .lang span{padding:5px 11px;color:var(--gold-deep);cursor:pointer}
 .lang span.on{background:var(--onyx);color:var(--cream)}
 .navtoggle{display:none}
+nav.main .navcta{display:none} /* mobile-only cloned CTA; hidden on desktop */
 
 /* section bands */
 .band-onyx{background:var(--onyx);color:var(--cream);--mk-crown:#fdfaf5;--mk-flame:var(--gold-lt)}
@@ -225,7 +227,7 @@ footer{background:#230a1a;color:var(--cream);--mk-crown:#fdfaf5;--mk-flame:var(-
   nav.main a:not(.navcta):first-child{border-top:none}
   nav.main a.active{color:var(--gold-deep)}
   nav.main a.active::after{display:none}
-  nav.main .navcta{margin:18px 40px 2px;justify-content:center}
+  nav.main .navcta{display:inline-flex;margin:18px 40px 2px;justify-content:center}
   /* stacking */
   .numgrid.cols3,.numgrid.cols2,.people,.members-grid,.contact .grid,.steps,.feecard{grid-template-columns:1fr}
   .members-grid{grid-template-columns:repeat(3,1fr)}
@@ -312,3 +314,36 @@ a.feature:hover h3{color:var(--gold-deep)}
   .feature .thumb{min-height:200px}
   .feature .fbody{padding:32px 28px}
 }
+
+/* ───────────────────────────────────────────────
+   Work-in-progress bubble — flags features that
+   aren't wired up yet (EN/CS switch, member logo
+   cards, footer socials, LinkedIn icons, form
+   submit). The host keeps its own styling; we add
+   position + an escaping tooltip, and only wrap
+   elements that clip (overflow:hidden) so the
+   bubble can break out.
+─────────────────────────────────────────────── */
+.wip-host{position:relative}
+.wip-wrap{display:inline-flex}
+.is-wip,.is-wip *{cursor:help}
+/* opt-in gold "not final yet" dot — used on the EN/CS switch only */
+.wip-host.wip-dot::after{content:"";position:absolute;top:-4px;right:-4px;width:7px;height:7px;border-radius:50%;
+  background:var(--gold-deep);box-shadow:0 0 0 2px var(--beige-0);pointer-events:none;
+  opacity:.5;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.wip-host.wip-dot:hover::after,.wip-host.wip-dot:focus-within::after,.wip-host.wip-dot.wip-open::after{opacity:1;transform:scale(1.12)}
+
+.wip-bubble{position:absolute;left:50%;top:calc(100% + 12px);transform:translate(-50%,-6px);
+  width:max-content;max-width:min(230px,78vw);text-align:center;
+  background:var(--onyx-2);color:var(--cream);border:1px solid var(--hair-dark);
+  padding:9px 14px;border-radius:10px;font-size:12.5px;font-weight:600;letter-spacing:-0.005em;
+  line-height:1.3;box-shadow:0 14px 34px -14px rgba(46,13,32,.6);
+  opacity:0;visibility:hidden;pointer-events:none;z-index:80;
+  transition:opacity .26s var(--ease),transform .26s var(--ease),visibility 0s linear .26s}
+.wip-bubble::before{content:"";position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-bottom-color:var(--onyx-2)}
+.wip-bubble b{color:var(--gold-lt);font-weight:700}
+.wip-host:hover>.wip-bubble,
+.wip-host:focus-within>.wip-bubble,
+.wip-host.wip-open>.wip-bubble{opacity:1;visibility:visible;transform:translate(-50%,0);
+  transition:opacity .26s var(--ease),transform .26s var(--ease),visibility 0s}
