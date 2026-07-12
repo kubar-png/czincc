@@ -22,7 +22,7 @@
     --swipe:cubic-bezier(.72,0,.24,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  html{scroll-behavior:smooth;scroll-padding-top:90px;overflow-x:clip}
   body{font-family:"DM Sans",system-ui,sans-serif;background:var(--beige-0);color:var(--onyx);
     -webkit-font-smoothing:antialiased;line-height:1.5;letter-spacing:-0.01em;overflow-x:clip}
   a{color:inherit;text-decoration:none}
@@ -174,7 +174,7 @@
   form .full{grid-column:1/-1}
   label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-lt);margin-bottom:7px}
   input,textarea{width:100%;background:color-mix(in srgb,var(--cream) 7%,transparent);border:1px solid var(--hair-dark);border-radius:10px;
-    padding:13px 15px;color:var(--cream);font-family:inherit;font-size:15px;transition:.2s}
+    padding:13px 15px;color:var(--cream);font-family:inherit;font-size:16px;transition:.2s}
   input:focus,textarea:focus{outline:none;border-color:var(--gold);background:color-mix(in srgb,var(--cream) 11%,transparent)}
   textarea{min-height:120px;resize:vertical}
   form .pill{justify-content:center;width:100%}
@@ -238,6 +238,20 @@
     .contact .grid{gap:38px}
     .feature .fbody{padding:30px 26px}
     .cta-row{gap:14px}
+  }
+  /* tablet — restore multi-column layouts so iPads don't show giant single-column stacks */
+  @media(min-width:768px) and (max-width:1024px){
+    .triple,.pillars,.people{grid-template-columns:repeat(3,1fr)}
+    .tcell,.pillar{border-bottom:none;border-right:1px solid var(--hair)}
+    .pillar{border-right-color:var(--hair-dark);padding:48px 30px 0}
+    .tcell{padding:30px 26px}
+    .tcell:first-child,.pillar:first-child{padding-left:0}
+    .tcell:last-child,.pillar:last-child{border-right:none;padding-right:0}
+    .members-grid{grid-template-columns:repeat(4,1fr)}
+    .feature{grid-template-columns:1.1fr .9fr}
+    .feature .thumb{min-height:300px}
+    .feature .fbody{padding:40px}
+    .contact .grid{grid-template-columns:1fr;gap:44px}
   }
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
   .reveal.in{opacity:1;transform:none}
